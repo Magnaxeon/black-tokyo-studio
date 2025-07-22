@@ -62,17 +62,34 @@ export default function HomePage() {
 
           <div className="flex items-center space-x-4">
             {!isLoggedIn ? (
-              <Button
-                onClick={() => setIsLoggedIn(true)}
-                variant="outline"
-                className="border-pink-300 text-pink-600 hover:bg-pink-50"
+              <button
+                onClick={() => {
+                  const email = prompt("Email de administrador:")
+                  if (email === "marjourieraleman@gmail.com") {
+                    // Cambia por tu email real
+                    setIsLoggedIn(true)
+                  } else if (email) {
+                    alert("Acceso denegado")
+                  }
+                }}
+                className="text-pink-300 hover:text-pink-500 transition-colors p-2 rounded-full hover:bg-pink-50"
+                title="Admin"
               >
-                Iniciar Sesión Gmail
-              </Button>
+                <span className="text-2xl">🌸</span>
+              </button>
             ) : (
-              <Button onClick={() => setIsAdminOpen(true)} className="bg-pink-500 hover:bg-pink-600 text-white">
-                Panel Admin
-              </Button>
+              <div className="flex items-center space-x-2">
+                <Button onClick={() => setIsAdminOpen(true)} className="bg-pink-500 hover:bg-pink-600 text-white">
+                  Panel Admin
+                </Button>
+                <button
+                  onClick={() => setIsLoggedIn(false)}
+                  className="text-pink-300 hover:text-pink-500 transition-colors p-1"
+                  title="Cerrar sesión"
+                >
+                  <span className="text-lg">✕</span>
+                </button>
+              </div>
             )}
           </div>
         </div>
@@ -213,7 +230,7 @@ export default function HomePage() {
               <Calendar className="w-5 h-5 mr-2" />
               Reservar Ahora
             </Button>
-            <Link href="https://wa.me/+573001234567" target="_blank">
+            <Link href="https://wa.me/+56964030814" target="_blank">
               <Button
                 size="lg"
                 variant="outline"
@@ -252,7 +269,7 @@ export default function HomePage() {
             >
               <MapPin className="w-5 h-5" />
             </Link>
-            <Link href="https://wa.me/+573001234567" target="_blank" className="text-gray-400 hover:text-green-400">
+            <Link href="https://wa.me/+56964030814" target="_blank" className="text-gray-400 hover:text-green-400">
               <MessageCircle className="w-5 h-5" />
             </Link>
           </div>
